@@ -63,7 +63,15 @@ module.exports = class MailSender {
         from: '"Email Verification Bot ✉️" <' + email + ">",
         to: toEmail,
         subject: `🔐 Verify Your Email for ${name} Discord Server`,
-        text: getLocale(serverSettings.language, "emailText", name, code)
+        text: getLocale(serverSettings.language, "emailText", name, code),
+        headers: {
+          "X-Mailer": "Discord Email Verification Bot",
+          "X-Priority": "1",
+          "X-MSMail-Priority": "High",
+          Importance: "high",
+          "List-Unsubscribe": "<mailto:" + email + "?subject=unsubscribe>",
+          "X-Auto-Response-Suppress": "OOF, DR, RN, NRN, AutoReply",
+        },
       };
 
       if (!isGoogle) mailOptions["bcc"] = email;
