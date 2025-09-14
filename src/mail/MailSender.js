@@ -62,7 +62,7 @@ module.exports = class MailSender {
       const mailOptions = {
         from: '"Email Verification Bot ✉️" <' + email + ">",
         to: toEmail,
-        subject: name + " Discord Email Verification",
+        subject: `🔐 Verify Your Email for ${name} Discord Server`,
         text: getLocale(serverSettings.language, "emailText", name, code),
         headers: {
           "X-Mailer": "Discord Email Verification Bot",
